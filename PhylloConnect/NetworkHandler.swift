@@ -26,6 +26,7 @@ class NetworkHandler: NSObject {
         let loginData = loginString.data(using: String.Encoding.utf8)!
         let base64LoginString = loginData.base64EncodedString()
         request.addValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
+        
         URLSession(configuration: URLSessionConfiguration.default).dataTask(with: request) { (data, response, error) -> Void in
             var resp: [String:Any]?
             if let data = data {
